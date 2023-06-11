@@ -1,0 +1,26 @@
+class Solution {
+    public int maxProfit(int[] price) {
+      int max = 0;
+    int minPrice = Integer.MAX_VALUE;
+    for (int i = 0; i < price.length; i++) {
+      minPrice = Math.min(minPrice, price[i]);
+      max = Math.max(max, price[i] - minPrice);
+    }
+    return max;
+    }}
+    
+    
+    // This Solution Gives me TLE
+   class Solution {
+    public int maxProfit(int[] price) { 
+    
+   int max= 0;
+    for (int i = 0 ; i< price.length;i++){
+        for (int j= i+1; j<price.length; j++){
+            if (price[i] < price[j]){
+                max= Math.max(max,price[j]-price[i]);
+            }
+        }
+    }
+    return  max
+    }}
