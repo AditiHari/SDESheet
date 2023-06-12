@@ -1,0 +1,55 @@
+// Brute Force
+class Solution {
+    public int findDuplicate(int[] nums) {
+       // Arrays.sort(nums);
+       for (int i = 0 ; i< nums.length-1; i++){
+            if (nums[i] != nums[i+1]){
+                nums[i]++;
+            }
+            else{
+                return nums[i];
+            }
+        }
+        //return nums[i];
+        return -1;
+        }}
+        
+        
+        
+        //2nd approach, using another array it is marked with 1 if nums found at one time , if marked more then 1 then return that nums.
+        class Solution {
+        public int findDuplicate(int[] nums) {
+        int freq[] = new int[nums.length+1];
+        for (int i = 0 ; i < nums.length ; i++){
+            if (freq[nums[i]] == 0){
+                freq[nums[i]] +=1;
+            }
+            else{
+                return nums[i];
+            }
+        }
+        return 0;
+        }
+        }
+        
+        
+        
+        class Solution {
+        public int findDuplicate(int[] nums) {
+        int slow = nums[0];
+        int fast = nums[0];
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+
+        fast = nums[0];// to start again
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+
+
+    }
+}
