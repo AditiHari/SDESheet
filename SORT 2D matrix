@@ -1,0 +1,67 @@
+//Using Binary Search as it is Soretd
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+    int n= matrix.length;
+        int m= matrix[0].length;
+        int low =0;
+        int high = (m*n )-1;
+        while (low <= high){
+            int mid = (low + (high- low) / 2);
+            if(matrix[mid/m][mid % m] == target) {
+                return true;
+            }
+            if(matrix[mid/m][mid % m] < target) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            }
+        }
+        return false;
+        }
+    
+}
+
+// OPTIMAL SOLUTION 
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int i = 0;
+        int j = m - 1;
+
+        while (i < n && j >= 0) {
+            if (matrix[j][i] == target) {
+                return true;
+            }
+            if (matrix[j][i] > target) {
+                j--;
+            } else {
+                i++;
+            }
+        }
+
+        return false;
+    }
+}
+
+
+//Brute force
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        for (int i =0 ; i< m; i++){
+            for (int j = 0 ; j< n ; j++){
+                if ( matrix [i][j] == target ){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+
